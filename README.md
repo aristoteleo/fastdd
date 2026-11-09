@@ -106,6 +106,35 @@ With this policy enabled, current mtime determines eligibility. **An old complet
 
 `rewrite` writes the original content back and updates mtime. With filtering enabled, empty files are handled by updating their timestamps. `read` does not update mtime and therefore does not extend an mtime-based cleanup deadline; FastDD displays a reminder. Cleanup dates are estimates based on the supplied retention period. Actual cleanup depends on your server's policy and cleanup schedule.
 
+### Background example: `omic*` and `luria*`
+
+Upgrade FastDD, then process both groups of directories in one background task. This example uses 16 workers and 32 MiB chunks, rewriting files with 30 days or less remaining under a 90-day mtime-based cleanup policy. Files with more time remaining are skipped.
+
+```bash
+pip install -U fastdd
+
+nohup fastdd run \
+  '/scratch/users/steorra/analysis/omic*' \
+  '/scratch/users/steorra/analysis/luria*' \
+  --mode rewrite \
+  --workers 16 \
+  --chunk-mb 32 \
+  --retention-days 90 \
+  --skip-if-remaining-days 30 \
+  --state /scratch/users/steorra/analysis/.fastdd_omic_luria \
+  > /scratch/users/steorra/analysis/fastdd_omic_luria.log 2>&1 &
+```
+
+Replace the paths with your own directories as needed. Monitor the task from another terminal:
+
+```bash
+fastdd watch \
+  --state /scratch/users/steorra/analysis/.fastdd_omic_luria \
+  --color always
+```
+
+Press Ctrl+C to close the viewer while the background task continues. If an older task is still using the same state prefix, stop it before starting the new task; upgrading the package does not change a process that is already running.
+
 ## Resume and status
 
 - Without time filtering, rerunning a command with the same `--state` skips completed files whose path, size, and modification time match the stored record.
