@@ -1,0 +1,44 @@
+[2J[H
+[1;36m  FastDD[0m  [33mSCANNING[0m
+  PID 36055 · rewrite · 2 workers
+  Started  2026-11-09 08:58:39 PST
+  Updated  2026-11-09 08:58:39 PST
+
+  [32m[0m[90m────────────────────────────────────────[0m  [1;36mscanning[0m
+
+  Found    0 files / 0.00 B
+  Done     [32m0[0m    Skipped [33m0[0m    Failed [90m0[0m
+  Completed 0.00 B
+  Speed    [1;36m0.00 B/s[0m    ETA --
+  Elapsed  00:00:00    Queue 0
+
+  Cleanup estimate: mtime + 90 days; skip when > 30 days left
+  Time skipped  [33m0[0m files / 0.00 B
+
+[2J[H
+[1;36m  FastDD[0m  [32mCOMPLETE[0m
+  PID 36055 · rewrite · 2 workers
+  Started  2026-11-09 08:58:39 PST
+  Updated  2026-11-09 08:58:40 PST
+
+  [32m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m[90m[0m  [1;36m100.00%[0m
+
+  Found    6 files / 48.00 MiB
+  Done     [32m4[0m    Skipped [33m2[0m    Failed [90m0[0m
+  Completed 32.00 MiB
+  Speed    [1;36m59.29 MiB/s[0m    ETA 00:00:00
+  Elapsed  00:00:00    Queue 0
+
+  Cleanup estimate: mtime + 90 days; skip when > 30 days left
+  Time skipped  [33m2[0m files / 16.00 MiB
+
+[1;34m  Recent file decisions (times at decision/completion)[0m
+  [32mDONE[0m  /private/tmp/fastdd-demo-h5dkyspy/data/matrix-70d.bin
+    mtime 2026-11-09 08:58:39 PST | est. cleanup 2027-02-07 08:58:39 PST | 90.00 days left
+  [32mDONE[0m  /private/tmp/fastdd-demo-h5dkyspy/data/archive-75d.bin
+    mtime 2026-11-09 08:58:39 PST | est. cleanup 2027-02-07 08:58:39 PST | 90.00 days left
+  [32mDONE[0m  /private/tmp/fastdd-demo-h5dkyspy/data/checkpoint-65d.bin
+    mtime 2026-11-09 08:58:39 PST | est. cleanup 2027-02-07 08:58:39 PST | 90.00 days left
+
+  Demo verified: 4 rewritten, 2 skipped; all 6 SHA-256 checksums unchanged.
+  Local temporary test files only. Throughput is not a server benchmark.

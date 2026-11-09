@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fastdd"
+version = "1.2.0"
+description = "Parallel file reader and in-place rewriter with resume and colorful progress"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = []
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Operating System :: POSIX",
+  "Topic :: System :: Filesystems",
+]
+
+[project.scripts]
+fastdd = "fastdd.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/aristoteleo/fastdd"
+Repository = "https://github.com/aristoteleo/fastdd"
+Issues = "https://github.com/aristoteleo/fastdd/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,2 @@
+# Preserve recorded terminal bytes, including ANSI controls and CRLF.
+*.ansi binary
