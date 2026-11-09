@@ -106,7 +106,7 @@ With this policy enabled, current mtime determines eligibility. **An old complet
 
 `rewrite` writes the original content back and updates mtime. With filtering enabled, empty files are handled by updating their timestamps. `read` does not update mtime and therefore does not extend an mtime-based cleanup deadline; FastDD displays a reminder. Cleanup dates are estimates based on the supplied retention period. Actual cleanup depends on your server's policy and cleanup schedule.
 
-### Background example: `omic*` and `luria*`
+### Background example: `25*` and `26*`
 
 Upgrade FastDD, then process both groups of directories in one background task. This example uses 16 workers and 32 MiB chunks, rewriting files with 30 days or less remaining under a 90-day mtime-based cleanup policy. Files with more time remaining are skipped.
 
@@ -114,22 +114,22 @@ Upgrade FastDD, then process both groups of directories in one background task. 
 pip install -U fastdd
 
 nohup fastdd run \
-  '/scratch/users/steorra/analysis/omic*' \
-  '/scratch/users/steorra/analysis/luria*' \
+  '/scratch/users/steorra/analysis/25*' \
+  '/scratch/users/steorra/analysis/26*' \
   --mode rewrite \
   --workers 16 \
   --chunk-mb 32 \
   --retention-days 90 \
   --skip-if-remaining-days 30 \
-  --state /scratch/users/steorra/analysis/.fastdd_omic_luria \
-  > /scratch/users/steorra/analysis/fastdd_omic_luria.log 2>&1 &
+  --state /scratch/users/steorra/analysis/.fastdd_25_26 \
+  > /scratch/users/steorra/analysis/fastdd_25_26.log 2>&1 &
 ```
 
 Replace the paths with your own directories as needed. Monitor the task from another terminal:
 
 ```bash
 fastdd watch \
-  --state /scratch/users/steorra/analysis/.fastdd_omic_luria \
+  --state /scratch/users/steorra/analysis/.fastdd_25_26 \
   --color always
 ```
 
